@@ -1,0 +1,8 @@
+import java.util.ArrayList;
+public class InstanceMemo{
+    public ArrayList<ObjetMemorise> instances = new ArrayList<ObjetMemorise>();
+
+    public InstanceMemo(){
+	instances.add(objet);
+    }
+}

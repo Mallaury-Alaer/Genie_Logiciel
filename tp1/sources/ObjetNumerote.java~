@@ -1,0 +1,18 @@
+public class ObjetNumerote{
+    public static numero = 0;
+
+    public ObjetNumerote(){
+	numero ++;
+    }
+
+    public String toString(){
+	return "Numero : "+ numero;
+    }
+
+    public static void main(){
+	for(int i=0;i<=10;i++){
+	    System.out.println(new ObjetNumerote());
+	}
+	return;
+    }
+}

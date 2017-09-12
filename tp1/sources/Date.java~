@@ -1,0 +1,19 @@
+public class Date
+{
+    // les attributs des instances
+    private int jour, mois, annee ;
+    // les attributs de la classe
+    public static final String [] NOM_DES_MOIS =
+    { "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet",
+      "Aout", "Septembre", "Octobre", "Novembre", "Decembre" } ;
+    public Date(int jour, int mois, int annee)
+    {
+        this.jour = jour ;
+        this.mois = mois ;
+        this.annee = annee ;
+    }
+    public String toString()
+    {
+        return jour + " " + NOM_DES_MOIS[mois-1] + " " + annee ;
+    }
+}
