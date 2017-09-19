@@ -9,12 +9,21 @@ public class Rationnel{
 	}else if( a < 0 || b < 0){
 	    a = (a<0) ? -a : a;
 	    this.b = (b<0) ? -b : b;
+	    
 	    if( a < b){
 		this.n -= 1;
 		this.a = this.b-a;
-	    }else if(a > b){
+	    }/*else if(a > b){
 		this.n -= a/this.b;
 		this.a = a%b;
+		}*/
+	    else if(a > b){
+		this.n -= a/this.b+1;
+		if(b > a%b)
+		    this.a = b-a%b;
+		else{
+		    this.a = a%b;
+		}
 	    }
 	}else{
 	    this.b=b;
@@ -42,8 +51,12 @@ public class Rationnel{
 		this.n -= 1;
 		this.a = this.b-a;
 	    }else if(a > b){
-		this.n -= a/this.b;
-		this.a = a%b;
+		this.n -= a/this.b+1;
+		if(b > a%b)
+		    this.a = b-a%b;
+		else{
+		    this.a = a%b;
+		}
 	    }
 	}else{
 	    this.b=b;
@@ -121,19 +134,27 @@ public class Rationnel{
 	}
     }
 
+    public String getPartieEntiere(){
+	return ""+n;
+    }
+
+    public String getDecimale(){
+	return a + "/" + b;
+    }
+
     public String toString(){
-	if(a == 0 && b == 0 && n == 0)
+	if(this.estNul())
 	    return "0";
 	if(a==0 || b == 0)
-	    return ""+n;
+	    return this.getPartieEntiere();
 	else if(n==0)
-	    return a + "/" + b;
+	    return this.getDecimale();
 	return n + " + " + a + "/" + b;
     }
 
     public static void main(String [] args){
         Rationnel r = new Rationnel(1,2,7);
 	System.out.println(r.compareTo(new Rationnel(1,2,3)));
-	System.out.println(new Rationnel(-2,3));
+	System.out.println(new Rationnel(-15,6));
     }
 }
