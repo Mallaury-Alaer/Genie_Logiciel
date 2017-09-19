@@ -13,15 +13,17 @@ public class Rationnel{
 		this.n -= 1;
 		this.a = this.b-a;
 	    }else if(a > b){
-		System.out.println(this.n);
 		this.n -= a/this.b;
-		System.out.println(this.n + "  " + a/b);
 		this.a = a%b;
 	    }
-	    
 	}else{
-	    this.a = a;
-	    this.b = b;
+	    this.b=b;
+	    if( a < b){
+		this.a = a;
+	    }else if(a > b){
+		this.n += a/this.b;
+		this.a = a%b;
+	    }
 	}
     }
 
@@ -34,18 +36,23 @@ public class Rationnel{
 	    this.a = -a;
 	    this.b = -b;
 	}else if( a < 0 || b < 0){
-	    this.n -= 1;
 	    a = (a<0) ? -a : a;
 	    this.b = (b<0) ? -b : b;
 	    if( a < b){
-		this.a = b-a;
+		this.n -= 1;
+		this.a = this.b-a;
 	    }else if(a > b){
-		this.n -= a/b;
+		this.n -= a/this.b;
 		this.a = a%b;
 	    }
 	}else{
-	    this.a = a;
-	    this.b = b;
+	    this.b=b;
+	    if( a < b){
+		this.a = a;
+	    }else if(a > b){
+		this.n += a/this.b;
+		this.a = a%b;
+	    }
 	}
     }
 
@@ -115,8 +122,12 @@ public class Rationnel{
     }
 
     public String toString(){
-	if(a==0)
-	    return n + " + 0";
+	if(a == 0 && b == 0 && n == 0)
+	    return "0";
+	if(a==0 || b == 0)
+	    return ""+n;
+	else if(n==0)
+	    return a + "/" + b;
 	return n + " + " + a + "/" + b;
     }
 
