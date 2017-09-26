@@ -1,3 +1,7 @@
+/**
+ *
+ *@author Mallaury Alaer
+ **/
 public class Rationnel{
     int n=0,a=0,b=0;
 
