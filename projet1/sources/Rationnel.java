@@ -1,10 +1,16 @@
 /**
- *
+ *Classe permettant la représentation de nombres rationnels
  *@author Mallaury Alaer
  **/
 public class Rationnel{
     int n=0,a=0,b=0;
 
+    /**
+     *Constructeur
+     *@param n partie entiere
+     *@param a numérateur
+     *@paral b dénominateur
+     */
     public Rationnel(int n, int a, int b){
 	this.n = n;
 	if( a < 0 && b < 0){
@@ -17,10 +23,7 @@ public class Rationnel{
 	    if( a < b){
 		this.n -= 1;
 		this.a = this.b-a;
-	    }/*else if(a > b){
-		this.n -= a/this.b;
-		this.a = a%b;
-		}*/
+	    }
 	    else if(a > b){
 		this.n -= a/this.b+1;
 		if(b > a%b)
@@ -40,10 +43,19 @@ public class Rationnel{
 	}
     }
 
+    /**
+     *Constructeur permettant de construire un rationnel dont la partie décimale est nulle
+     *@param n : la partie entière
+     */
     public Rationnel(int n){
         this.n = n;
     }
 
+    /**
+     *Constructeur permettant de construire un rationnel dont la partie entière est nulle
+     *@param a le numérateur
+     *@param b le denominateur
+     */
     public Rationnel(int a, int b){
         if( a < 0 && b < 0){
 	    this.a = -a;
@@ -73,10 +85,18 @@ public class Rationnel{
 	}
     }
 
+    /**
+     *Méthode permettant de déteriner si le nombre rationnel est nul ou non
+     *@return true si le rationnel est nul, false si non
+     */
     public boolean estNul(){
 	return this.a ==0 && this.b == 0 && this.n == 0;
     }
 
+    /**
+     *Méthode permettant d'obtenir l'inverse d'un nombre rationnel
+     *@return l'inverse du rationnel courant
+     */
     public Rationnel inverse(){
 	int a = this.b;
 	int b = (this.n !=0) ? this.b * this.n + this.a : this.a;
@@ -85,6 +105,11 @@ public class Rationnel{
 	return new Rationnel(a, b);
     }
 
+    /**
+     *Méthode d'addition de deux rationnels
+     *@param r le rationnel a ajouter
+     *@return la somme des deux rationnels (type Rationnel)
+     */
     public Rationnel ajouter(Rationnel r){
 	//Manque le cas ou this.n ou r.n est egal a 0
 	int den  = this.b * r.b;
@@ -101,6 +126,11 @@ public class Rationnel{
 	return new Rationnel(num, den);
     }
 
+    /**
+     *Méthode effectuat le produit de deux rationnels
+     *@param le rationnel a multiplier
+     *@return le produit des deux rationnels (type Rationnel)
+     */
     public Rationnel multiplier(Rationnel r){
 	//Manque le cas ou this.n ou r.n est egal a 0
 	int den = this.b * r.b;
@@ -122,6 +152,11 @@ public class Rationnel{
 	return new Rationnel(num, den);
     }
 
+    /**
+     *Méthode de comparaison de deux rationnels
+     *@param r rationnel avec lequel comparer le rationnel courant
+     *@return 0 si les rationnels sont égaux, -1 si le rationnel courant est plus petit que r, 1 si il est plus grand
+     */
     public int compareTo(Rationnel r){
 	if(this.n > r.n)
 	    return 1;
@@ -138,10 +173,18 @@ public class Rationnel{
 	}
     }
 
+    /**
+     *Méthode permettant de récupérer la partie entière sous forme de chaine de caracteres
+     *@return la partie entiere
+     */
     public String getPartieEntiere(){
 	return ""+n;
     }
 
+    /**
+     *Méthode permettant de récuperer la partie décimale sous forme de chaine de caratcteres
+     *@return la partie décimale
+     */
     public String getDecimale(){
 	return a + "/" + b;
     }
