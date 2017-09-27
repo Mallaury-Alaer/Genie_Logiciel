@@ -1,0 +1,16 @@
+import java.util.Scanner
+public class NoeudArbre {
+    String question;
+    NoeudArbre droite;
+    NoeudArbre gauche;
+
+    public NoeudArbre(String question){
+	this.question = question;
+    }
+
+    public NoeudArbre(String question, NoeudArbre droite, NoeudArbre gauche){
+	this.question = question;
+	this.droite = droite;
+	this.gauche = gauche;
+    }
+}
