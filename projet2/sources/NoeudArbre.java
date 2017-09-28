@@ -41,6 +41,7 @@ public class NoeudArbre {
 	    else
 		System.out.println("Trouve !");
 	}else if(reponse.equals("non")){
+	    //System.out.println("LA");
 	    if(gauche != null)
 		gauche.rechercherAnimal();
 	    else{
@@ -70,22 +71,39 @@ public class NoeudArbre {
     }
 
     public String definir(String animal){
-	return "";
+	String rep=this.question;
+	String tmp;
+
+	if(this.gauche != null){
+	    tmp = " --> non --> " + this.gauche.definir(animal);
+	    if(tmp.contains(animal))
+		rep += tmp;
+	}
+	if(this.droite != null){
+	    tmp = " --> oui --> " + this.droite.definir(animal);
+	    if(tmp.contains(animal))
+		rep+=tmp;
+	}
+	return rep;
     }
 
     public static void main(String[] args){
 	NoeudArbre test;
-	NoeudArbre animal1 = (args.length ==0 ) ?  new NoeudArbre("un chien") : new NoeudArbre(args[2]);
-	NoeudArbre animal2 = (args.length == 0 ) ? new NoeudArbre("un crocodile") : new NoeudArbre(args[1]);
-	String questionDepart = (args.length == 0) ? "Est-ce un mammifere?" : args[0];
+	if(args.length==2 &&  args[0].equals("--definir")){
+	    test = new NoeudArbre("Est-ce un mammifere?",new NoeudArbre("Est-ce qu'il aboie?", new NoeudArbre("un chien"), new NoeudArbre("un cheval")),new NoeudArbre("un crocodile"));
+	    System.out.println(test.definir(args[1]));
+	}else{
+	    NoeudArbre animal1 = (args.length ==0 ) ?  new NoeudArbre("un chien") : new NoeudArbre(args[2]);
+	    NoeudArbre animal2 = (args.length == 0 ) ? new NoeudArbre("un crocodile") : new NoeudArbre(args[1]);
+	    String questionDepart = (args.length == 0) ? "Est-ce un mammifere?" : args[0];
 	    
-	String rejoue = "oui";
-	while(rejoue.equals("oui")){
-	    test = new NoeudArbre(questionDepart,animal1, animal2);
-	    test.rechercherAnimal();
-	    System.out.println("Voulez vous rejouer?");
-	    rejoue = (new Scanner(System.in)).nextLine();
+	    String rejoue = "oui";
+	    while(rejoue.equals("oui")){
+		test = new NoeudArbre(questionDepart,animal1, animal2);
+		test.rechercherAnimal();
+		System.out.println("Voulez vous rejouer?");
+		rejoue = (new Scanner(System.in)).nextLine();
+	    }
 	}
-	
     }
 }
