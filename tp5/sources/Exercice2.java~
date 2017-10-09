@@ -1,0 +1,15 @@
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+import java.util.Scanner;
+
+public class Exercice2{
+    public static void main(String [] args){
+	Scanner scan = new Scanner(System.in);
+	String res = "", phrase = scanner.nextLine();
+	ArrayList<String> list = new ArrayList<>();
+	StringTokenizer st = new StringTokenizer(phrase);
+	while(st.hasMoreTokens()){
+	    
+	}
+    }
+}

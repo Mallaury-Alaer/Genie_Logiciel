@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class Recensements{
+    public static String bitSet(String phrase){
+	BitSet bs = new BitSet();
+	String res = "";
+
+	for(int i=0; i<phrase.length(); i++)
+	    bs.set(phrase.charAt(i));
+
+	for (int i=0; i<bs.length(); i++){
+	    if (bs.get(i)){
+	        res+=(char) i + " ";
+	    }
+	}
+	return res;
+    }
+
+    public static void main(String[] args){
+	Scanner scan = new Scanner(System.in);
+	String phrase = scan.nextLine();
+	System.out.println(bitSet(phrase));
+    }
+}
