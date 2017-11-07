@@ -1,6 +1,9 @@
+/**
+ *@author Mallaury Alaer
+ */
 package image;
 
-import dictionnaire,correction.*;
+import dictionnaire.correction.*;
 import java.util.Iterator;
 public class ImageDict implements ImageGrise{
     int largeur;
@@ -46,7 +49,7 @@ public class ImageDict implements ImageGrise{
     *@param gris niveau de grispar lequel remplacer le niveau de gris actuel du point
     */
     public void definirPoint(int x, int y, NiveauGris gris){
-        Point p = new Point(x,y);
+        Point point = new Point(x,y);
         dico.ajouter(point,gris);
     }
     
@@ -106,17 +109,16 @@ public class ImageDict implements ImageGrise{
         return img;
     }
     
-    TODO
     /** Retourne une image dont tous les points (sauf blancs) sont un niveau
      * plus clair que dans l'image courante */
     public ImageGrise eclaircir(){
         ImageGrise img = new ImageTab(largeur, hauteur);
         for(int i=0;i<largeur;i++){
             for(int j=0 ; j<hauteur ; j++){
-                if(!nivGris[i][j].estBlanc())
-                    img.definirPoint(i,j,nivGris[i][j].eclaircir());
+                if(!((NiveauGris) dico.valeurPour(new Point(i, j))).estBlanc())
+                    img.definirPoint(i,j,((NiveauGris) dico.valeurPour(new Point(i, j))).eclaircir());
                 else
-                    img.definirPoint(i,j,nivGris[i][j]);
+                    img.definirPoint(i,j,((NiveauGris) dico.valeurPour(new Point(i, j))));
             }
         }
         return img;
@@ -128,10 +130,10 @@ public class ImageDict implements ImageGrise{
         ImageGrise img = new ImageTab(largeur, hauteur);
         for(int i=0;i<largeur;i++){
             for(int j=0 ; j<hauteur ; j++){
-                if(!nivGris[i][j].estNoir())
-                    img.definirPoint(i,j,nivGris[i][j].assombrir());
+                if(!((NiveauGris) dico.valeurPour(new Point(i, j))).estNoir())
+                    img.definirPoint(i,j,((NiveauGris) dico.valeurPour(new Point(i, j))).assombrir());
                 else
-                    img.definirPoint(i,j,nivGris[i][j]);
+                    img.definirPoint(i,j,((NiveauGris) dico.valeurPour(new Point(i, j))));
             }
         }
         return img;
@@ -142,7 +144,7 @@ public class ImageDict implements ImageGrise{
         ImageGrise img = new ImageTab(largeur, hauteur);
         for(int i=0;i<largeur;i++){
             for(int j=0 ; j<hauteur ; j++){
-                img.definirPoint(i,j,nivGris[i][j]);
+                img.definirPoint(i,j,((NiveauGris) dico.valeurPour(new Point(i, j))));
             }
         }
         return img;
@@ -155,7 +157,7 @@ public class ImageDict implements ImageGrise{
             ImageGrise newImg = new ImageTab(largeur, hauteur);
             for(int i=0;i<largeur;i++){
                 for(int j=0 ; j<hauteur ; j++){
-                    newImg.definirPoint(i,j,nivGris[i][j].ajouter(img.pointEn(i,j)));
+                    newImg.definirPoint(i,j,((NiveauGris) dico.valeurPour(new Point(i, j))).ajouter(img.pointEn(i,j)));
                 }
             }
         return newImg;
@@ -170,7 +172,7 @@ public class ImageDict implements ImageGrise{
             ImageGrise newImg = new ImageTab(largeur, hauteur);
             for(int i=0;i<largeur;i++){
                 for(int j=0 ; j<hauteur ; j++){
-                    newImg.definirPoint(i,j,nivGris[i][j].soustraire(img.pointEn(i,j)));
+                    newImg.definirPoint(i,j,((NiveauGris) dico.valeurPour(new Point(i, j))).soustraire(img.pointEn(i,j)));
                 }
             }
             return newImg;
@@ -186,7 +188,7 @@ public class ImageDict implements ImageGrise{
             ImageGrise newImg = new ImageTab(largeur, hauteur);
             for(int i=0;i<largeur;i++){
                 for(int j=0 ; j<hauteur ; j++){
-                    newImg.definirPoint(i,j,nivGris[i][j].XOR(img.pointEn(i,j)));
+                    newImg.definirPoint(i,j,((NiveauGris) dico.valeurPour(new Point(i, j))).XOR(img.pointEn(i,j)));
                 }
             }
             return newImg;
@@ -202,8 +204,8 @@ public class ImageDict implements ImageGrise{
             ImageGrise newImg = new ImageTab(largeur, hauteur);
             for(int i=0;i<largeur;i++){
                 for(int j=0 ; j<hauteur ; j++){
-                    if(nivGris[i][j].equals(img.pointEn(i,j)))
-                        newImg.definirPoint(i,j,nivGris[i][j]);
+                    if(((NiveauGris) dico.valeurPour(new Point(i, j))).equals(img.pointEn(i,j)))
+                        newImg.definirPoint(i,j,((NiveauGris) dico.valeurPour(new Point(i, j))));
                 }
             }
             return newImg;
@@ -218,7 +220,7 @@ public class ImageDict implements ImageGrise{
         int moyenne =0;
         for(int i=0;i<largeur;i++){
             for(int j=0 ; j<hauteur ; j++){
-                moyenne+=nivGris[i][j].ordinal();
+                moyenne+=((NiveauGris) dico.valeurPour(new Point(i, j))).ordinal();
             }
         }
         moyenne = moyenne / (largeur*hauteur);
@@ -236,10 +238,10 @@ public class ImageDict implements ImageGrise{
 	
         for(int i=0; i < largeur ; i++){
             for(int j=0; j < hauteur ; j++){
-                if (nivGris[i][j].compareTo(moyen) < 0)
-                    nivGris[i][j].eclaircir();
+                if (((NiveauGris) dico.valeurPour(new Point(i, j))).compareTo(moyen) < 0)
+                    ((NiveauGris) dico.valeurPour(new Point(i, j))).eclaircir();
                 else
-                    nivGris[i][j].assombrir();
+                    ((NiveauGris) dico.valeurPour(new Point(i, j))).assombrir();
             }
         }
         return newImg;

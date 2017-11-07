@@ -1,3 +1,6 @@
+/**
+ *@author Mallaury Alaer
+ */
 package image;
 import java.util.Random;
 
