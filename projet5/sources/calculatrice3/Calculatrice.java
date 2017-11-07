@@ -20,11 +20,14 @@ public class Calculatrice{
 	while(st.hasMoreTokens()){
 	    String token = st.nextToken();
 	    if(operations.containsKey(token)){
+		/*
 		Double [] operandes = new Double[operations.get(token).arite];
 		for(int i = 0; i<operandes.length; i++){
 		    operandes[i] = resultat.pop();
 		}
-		resultat.push(operations.get(token).eval(operandes));
+		*/
+		//resultat.push(operations.get(token).eval(operandes));
+	        operations.get(token).execute(resultat);
 	    }else{
 		Double tmp = Double.parseDouble(token);
 		resultat.push(tmp);

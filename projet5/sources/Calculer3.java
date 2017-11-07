@@ -1,6 +1,6 @@
 import calculatrice3.* ;
 
-public class Calculer {
+public class Calculer3 {
     public static void main(String [] args) {
         Calculatrice c = new Calculatrice() ;
         try {
