@@ -8,7 +8,7 @@ public class Hanoi
     // Initialisation des tours pour n disques, placés au début en A
     private static void init(int n) 
     {
-	//a = new PileHanoi("jolie pile", new AffichageJoli()) ;la classe affichageJoli n'est pas trouvée lors de l'execution du programme
+	//a = new PileHanoi("jolie pile", new AffichageJoli()) ;//la classe affichageJoli n'est pas trouvée lors de l'execution du programme
 	a= new PileHanoi("A");
 	b = new PileHanoi("B") ;
 	c = new PileHanoi("C") ;

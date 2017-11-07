@@ -33,9 +33,14 @@ public class Eratosthene{
     }
 
     public static void main(String[] args){
+	/*
 	Eratosthene e = new Eratosthene(25);
 	e.doTheThing();
 	System.out.println(e.toString());
 	return;
+	*/
+	Generateur g = new Generateur(10000) ;
+        g.travailler() ;
+        System.out.println(g.toString()) ;
     }
 }

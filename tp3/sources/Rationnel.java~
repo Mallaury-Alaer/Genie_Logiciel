@@ -1,0 +1,8 @@
+public class Rationnel<Integer, Integer>{
+    int num, den;
+
+    public Rationnel<Integer, Integer>(int num,int  den){
+	this.num = num;
+	this.den = den;
+    }
+}

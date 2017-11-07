@@ -1,0 +1,6 @@
+public class Filtre{
+
+    public Filtre(int n){
+
+    }
+}

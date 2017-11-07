@@ -1,14 +1,22 @@
 import java.util.Scanner;
-
+/**
+ *Classe permettant le parcous d'un arbre binaire
+ *@author Mallaury Alaer
+ **/
 public class NoeudArbre {
     String question;
     NoeudArbre droite;//oui
     NoeudArbre gauche;//non
 
+    /**
+     *Constructeur
+     **/
     public NoeudArbre(String question){
 	this.question = question;
     }
-
+    /**
+     *Constructeur
+     **/
     public NoeudArbre(String question, NoeudArbre droite, NoeudArbre gauche){
 	this.question = question;
 	this.droite = droite;
@@ -24,6 +32,10 @@ public class NoeudArbre {
 	return rep;
     }
 
+    /**
+     *Methode permettant d'afficher le contenu du noeud
+     *@return contenu du noeud
+     **/
     public String contenu(){
 	return this.question;
     }
@@ -41,7 +53,6 @@ public class NoeudArbre {
 	    else
 		System.out.println("Trouve !");
 	}else if(reponse.equals("non")){
-	    //System.out.println("LA");
 	    if(gauche != null)
 		gauche.rechercherAnimal();
 	    else{

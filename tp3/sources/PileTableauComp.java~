@@ -1,0 +1,3 @@
+public class PileTableauComp<Comparable> implements Pile<Comparable>{
+
+}

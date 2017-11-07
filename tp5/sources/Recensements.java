@@ -29,10 +29,11 @@ public class Recensements{
 
     public static String wHashMap(String phrase){
 	HashMap<Character, Integer> map = new HashMap<>();
+	String res = "";
 
 	int index=0;
 	while(index < phrase.length()){
-	    Character c = phrase.charAt(index);
+	    char c = phrase.charAt(index);
 	    if(map.containsKey(c)){
 		Integer val = map.get(c) +1;
 		map.put(c, val);
@@ -41,7 +42,10 @@ public class Recensements{
 	    }	    
 	    index++;
 	}
-	return map.toString();
+	for(char letter : map.keySet()){
+	    res+=letter + "->" + map.get(letter) + ", ";
+	}
+	return res;
     }
 
     public static void main(String[] args){

@@ -1,0 +1,3 @@
+public class CoupeObj<K,V> implements Couple<K,V>{
+    
+}

@@ -1,0 +1,7 @@
+package comptes;
+public class LivretA extends CompteEpargne{
+    private final double TAUX = 2;
+    public LivretA(){
+	
+    }
+}

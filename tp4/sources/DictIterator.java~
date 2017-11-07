@@ -1,0 +1,3 @@
+class DictIterator<K> implements Iterator<K>{
+    Dictionnaire<K,?> dict;
+}

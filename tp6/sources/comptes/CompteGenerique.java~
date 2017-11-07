@@ -1,0 +1,19 @@
+package comptes;
+
+public class CompteGenerique extends Compte{
+    private int numCompte;
+    private int montant;
+    private int nbMois;
+
+    public CompteGenerique(int numCompte){
+	
+    }
+
+    public CompteGenerique(int numCompte, int montant){
+
+    }
+
+    public CompteGenerique(int numCompte, int montant, int nbMois){
+	
+    }
+}

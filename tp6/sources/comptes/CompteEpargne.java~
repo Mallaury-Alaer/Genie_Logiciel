@@ -1,0 +1,6 @@
+/**
+ *@author Mallaury Alaer
+ */
+public class CompteEpargne extends CompteGenerique{
+    
+}

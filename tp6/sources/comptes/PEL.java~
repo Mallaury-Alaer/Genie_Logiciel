@@ -1,0 +1,11 @@
+/**
+ *@author Mallaury Alaer
+ */
+package comptes;
+
+public class PEL extends CompteEpargne{
+    private static double taux = 5; 
+    public PEL(int idComtpe){
+	super(idCompte, taux);
+    }
+}
